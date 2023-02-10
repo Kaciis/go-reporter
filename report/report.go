@@ -1,33 +1,17 @@
-package main
+package report
 
 import (
 	"encoding/json"
-	"log"
 	"net/http"
 	"os"
 	"strings"
 
-	"github.com/Kaciis/go-reporter/pkg/controllers/app"
 	"github.com/Kaciis/go-reporter/pkg/controllers/report"
-	"github.com/Kaciis/go-reporter/pkg/routes"
-	"github.com/go-chi/chi"
 )
 
 type Reporter struct {
 	Iniciator string
 	Url       string
-}
-
-func main() {
-
-	app.Init()
-
-	route := routes.New()
-
-	r := chi.NewRouter()
-	r.Route("/", route.Routes)
-
-	log.Fatal(http.ListenAndServe(":8080", r))
 }
 
 func (r *Reporter) Error(err error) {
