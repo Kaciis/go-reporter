@@ -3,7 +3,6 @@ package report
 import (
 	"encoding/json"
 	"net/http"
-	"os"
 	"strings"
 
 	"github.com/Kaciis/go-reporter/pkg/controllers/report"
@@ -48,10 +47,6 @@ func (r *Reporter) Error(err error) {
 }
 
 func send(report report.ReportBody, url string) error {
-
-	if url == "" {
-		url = os.Getenv("REPORT_URL")
-	}
 
 	s_report, err := json.Marshal(report)
 

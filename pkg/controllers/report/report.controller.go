@@ -32,5 +32,6 @@ func Report(w http.ResponseWriter, r *http.Request) {
 	}
 
 	msg := GenerateReport(*rb)
-	go SendMessage(msg)
+	log.Printf("Report: %v", msg)
+	SendMessage(msg)
 }
