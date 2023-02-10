@@ -1,6 +1,7 @@
 package report
 
 import (
+	"log"
 	"strings"
 	"time"
 
@@ -10,7 +11,11 @@ import (
 
 func SendMessage(message discordgo.MessageEmbed) {
 
-	app.App.Session.ChannelMessageSendEmbed(app.App.ChannelID, &message)
+	_, err := app.App.Session.ChannelMessageSendEmbed(app.App.ChannelID, &message)
+
+	if err != nil {
+		log.Println(err)
+	}
 
 }
 func GenerateReport(report ReportBody) (msg discordgo.MessageEmbed) {
@@ -19,6 +24,9 @@ func GenerateReport(report ReportBody) (msg discordgo.MessageEmbed) {
 		Title:       generateTitle(report.Type, report.Iniciator),
 		Color:       generateColor(report.Type),
 		Description: generateDescription(report.Message),
+		Author: &discordgo.MessageEmbedAuthor{
+			Name: report.Iniciator,
+		},
 	}
 
 	return msg
