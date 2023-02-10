@@ -14,6 +14,29 @@ type Reporter struct {
 	Url       string
 }
 
+func New() *Reporter {
+	return &Reporter{}
+}
+
+func (r *Reporter) Info(message string) {
+
+	send(report.ReportBody{
+		Type:      "info",
+		Message:   message,
+		Iniciator: r.Iniciator,
+	}, r.Url)
+
+}
+
+func (r *Reporter) Warning(message string) {
+
+	send(report.ReportBody{
+		Type:      "warning",
+		Message:   message,
+		Iniciator: r.Iniciator,
+	}, r.Url)
+}
+
 func (r *Reporter) Error(err error) {
 
 	send(report.ReportBody{
