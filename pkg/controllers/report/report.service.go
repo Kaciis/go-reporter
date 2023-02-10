@@ -11,6 +11,8 @@ import (
 
 func SendMessage(message discordgo.MessageEmbed) {
 
+	log.Println("Sending message to discord..." + app.App.ChannelID)
+
 	_, err := app.App.Session.ChannelMessageSendEmbed(app.App.ChannelID, &message)
 
 	if err != nil {
