@@ -11,8 +11,6 @@ import (
 
 func SendMessage(message discordgo.MessageEmbed) {
 
-	log.Println("Sending message to discord..." + app.App.ChannelID)
-
 	_, err := app.App.Session.ChannelMessageSendEmbed(app.App.ChannelID, &message)
 
 	if err != nil {
@@ -46,7 +44,7 @@ func generateTitle(reportType, iniciator string) (title string) {
 		emote = ":information_source:"
 	}
 
-	title = emote + " " + strings.ToTitle(reportType) + " " + emote + " => " + iniciator + " <= " + emote + " " + strings.ToTitle(reportType) + " " + emote
+	title = emote + " " + strings.ToTitle(reportType) + " " + emote
 
 	return title
 }

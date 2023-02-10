@@ -9,7 +9,6 @@ import (
 
 func Report(w http.ResponseWriter, r *http.Request) {
 	var rb *ReportBody
-	log.Printf("Request")
 	byte_rb, err := io.ReadAll(r.Body)
 
 	if err != nil {
@@ -32,6 +31,5 @@ func Report(w http.ResponseWriter, r *http.Request) {
 	}
 
 	msg := GenerateReport(*rb)
-	log.Printf("Report: %v", msg)
 	SendMessage(msg)
 }
