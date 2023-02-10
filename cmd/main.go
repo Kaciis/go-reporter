@@ -17,6 +17,6 @@ func main() {
 
 	r := chi.NewRouter()
 	r.Route("/", route.Routes)
-
+	log.Println("Server started on port 8080")
 	log.Fatal(http.ListenAndServe(":8080", r))
 }

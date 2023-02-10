@@ -1,6 +1,10 @@
 package routes
 
-import "github.com/go-chi/chi"
+import (
+	"log"
+
+	"github.com/go-chi/chi"
+)
 
 type Router struct{}
 
@@ -10,4 +14,5 @@ func New() *Router {
 
 func (r *Router) Routes(router chi.Router) {
 	router.Route("/report", reportRouter)
+	log.Println("Routes loaded")
 }
