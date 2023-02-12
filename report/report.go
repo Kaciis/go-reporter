@@ -2,6 +2,7 @@ package report
 
 import (
 	"encoding/json"
+	"log"
 	"net/http"
 	"strings"
 
@@ -57,6 +58,7 @@ func send(report report.ReportBody, url string) error {
 	_, err = http.Post(url, "application/json", strings.NewReader(string(s_report)))
 
 	if err != nil {
+		log.Println(err)
 		return err
 	}
 
